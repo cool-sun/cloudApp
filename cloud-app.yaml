@@ -1,0 +1,107 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cloud-app
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloud-app
+  namespace: cloud-app
+  labels:
+    app: cloud-app
+spec:
+  type: NodePort
+  ports:
+    - port: 8090
+      targetPort: 8090
+      nodePort: 32668
+  selector:
+    app: cloud-app
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cloud-app-mysql-pvc
+  namespace: cloud-app
+  labels:
+    app: cloud-app-mysql-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-app-mysql
+  namespace: cloud-app
+  labels:
+    app: cloud-app
+spec:
+  selector:
+    matchLabels:
+      app: cloud-app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: cloud-app
+    spec:
+      containers:
+        - image: mysql:5.7
+          name: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: cloud-app123,.
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - name: cloud-app-mysql-volumes
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: cloud-app-mysql-volumes
+          persistentVolumeClaim:
+            claimName: cloud-app-mysql-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-app
+  namespace: cloud-app
+  labels:
+    app: cloud-app
+spec:
+  selector:
+    matchLabels:
+      app: cloud-app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: cloud-app
+    spec:
+      containers:
+        - image: mysql:5.7
+          name: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: cloud-app123,.
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - name: cloud-app-mysql-volumes
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: cloud-app-mysql-volumes
+          persistentVolumeClaim:
+            claimName: cloud-app-mysql-pvc

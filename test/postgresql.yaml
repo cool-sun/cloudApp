@@ -1,0 +1,24 @@
+apiVersion: cloud.k8s.io/v1
+kind: App
+metadata:
+  name: postgresql001011
+  namespace: cloud-app
+spec:
+  app_big_category: db
+  app_little_category: postgresql
+  replicas: 1
+  strategy: 1
+  controller: statefulset
+  pod:
+    main:
+      image: docker.io/library/postgres
+      tag: '10'
+      args: [ ]
+      command: [ ]
+      cpu: '1'
+      mem: '2'
+      env: [ "POSTGRES_PASSWORD:123QWEasd" ] #必要的环境变量(格式 name:value)
+      ports: [ "5432:tcp" ]   #需要暴露的端口和协议(格式 端口:协议)，字符数组，每个端口是数组的一项
+      volume_mount: [ "/var/lib/postgresql/data" ]   #需要挂载出来进行持久化的目录
+  volume_size: '1'
+  internet_access: true

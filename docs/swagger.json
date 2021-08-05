@@ -1,0 +1,2419 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/app-category/tag/list": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app类别"
+                ],
+                "summary": "获取某个类型的app的所有支持的tag号，即版本号",
+                "parameters": [
+                    {
+                        "description": "app创建",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AppLittleCategoryTagReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.AppLittleCategoryTagRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app-category/template": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app类别"
+                ],
+                "summary": "获取所有支持的App类别模板",
+                "responses": {
+                    "200": {
+                        "description": "获取所有支持的App类别模板",
+                        "schema": {
+                            "$ref": "#/definitions/model.AppCategoryTmplRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/config/update": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "更新app的配置文件",
+                "parameters": [
+                    {
+                        "description": "更新app的配置文件",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AppConfigUpdateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/config/{app_name}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "获取app配置",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "app_name",
+                        "name": "app_name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.AppConfigRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "app创建",
+                "parameters": [
+                    {
+                        "description": "app创建",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AppCreateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/delete": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "app删除",
+                "parameters": [
+                    {
+                        "description": "app删除",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AppDeleteReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/detail/{app_name}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "获取app详细信息",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "app_name",
+                        "name": "app_name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.AppDetailRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/env": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "app更新env",
+                "parameters": [
+                    {
+                        "description": "app更新env",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AppEnvReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/list": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "app信息列表",
+                "parameters": [
+                    {
+                        "description": "app信息列表",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AppListReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.AppListRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/open": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "app开启或关闭集群外访问",
+                "parameters": [
+                    {
+                        "description": "app开启或关闭集群外访问",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AppOpenReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/replicas": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "app副本数伸缩",
+                "parameters": [
+                    {
+                        "description": "app副本数伸缩",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AppReplicasReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/restart": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "app重启",
+                "parameters": [
+                    {
+                        "description": "app重启",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AppRestartReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/restore": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "app根据快照恢复数据",
+                "parameters": [
+                    {
+                        "description": "app根据快照恢复数据",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AppRestoreReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/sc": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "获取支持的存储类型",
+                "responses": {
+                    "200": {
+                        "description": "获取支持的存储类型",
+                        "schema": {
+                            "$ref": "#/definitions/model.SCListRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/scale": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "app扩缩容",
+                "parameters": [
+                    {
+                        "description": "app扩缩容,主要是内存和cpu的调整",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AppScaleReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/snapshot/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app快照"
+                ],
+                "summary": "app创建存储快照",
+                "parameters": [
+                    {
+                        "description": "app创建存储快照",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.SnapshotCreateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/snapshot/delete": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app快照"
+                ],
+                "summary": "删除快照",
+                "parameters": [
+                    {
+                        "description": "删除快照",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.SnapshotDeleteReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/snapshot/list": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app快照"
+                ],
+                "summary": "获取快照列表",
+                "parameters": [
+                    {
+                        "description": "获取快照列表",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.SnapshotListReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.SnapshotListRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/start": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "app启动",
+                "parameters": [
+                    {
+                        "description": "app启动",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AppRestartReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/stop": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "app停止",
+                "parameters": [
+                    {
+                        "description": "app停止",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AppRestartReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/app/version": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app"
+                ],
+                "summary": "app版本更换",
+                "parameters": [
+                    {
+                        "description": "app版本更换",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AppVersionReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/helm/release/Update": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "helm release"
+                ],
+                "summary": "helm release更新",
+                "parameters": [
+                    {
+                        "description": "helm release更新",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.HelmReleaseUpdateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/helm/release/create": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "helm release"
+                ],
+                "summary": "helm release创建",
+                "parameters": [
+                    {
+                        "description": "helm release创建",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.HelmReleaseCreateReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/helm/release/delete": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "helm release"
+                ],
+                "summary": "helm release删除",
+                "parameters": [
+                    {
+                        "description": "helm release删除",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.HelmReleaseReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/helm/release/list": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "helm release"
+                ],
+                "summary": "helm release列表信息",
+                "parameters": [
+                    {
+                        "description": "helm release列表信息",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.HelmReleaseListReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.HelmReleaseListRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/helm/release/values": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "helm release"
+                ],
+                "summary": "获取helm release的values",
+                "parameters": [
+                    {
+                        "description": "获取helm release的values",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.HelmReleaseReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/delete": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户"
+                ],
+                "summary": "删除用户",
+                "parameters": [
+                    {
+                        "description": "删除用户",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.UserDeleteReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/edit": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户"
+                ],
+                "summary": "编辑用户信息",
+                "parameters": [
+                    {
+                        "description": "编辑用户信息,适用于用户自己编辑自己的信息",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.UserEditReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/list": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户"
+                ],
+                "summary": "获取用户列表",
+                "parameters": [
+                    {
+                        "description": "获取用户列表",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.UserListReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.UserListRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/login": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户"
+                ],
+                "summary": "用户登录",
+                "parameters": [
+                    {
+                        "description": "用户登录",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.UserLoginReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.UserLoginRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/logout": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户"
+                ],
+                "summary": "用户登出",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/manager-edit": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户"
+                ],
+                "summary": "管理员编辑用户",
+                "parameters": [
+                    {
+                        "description": "管理员编辑用户",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.UserRegisterReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/register": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户"
+                ],
+                "summary": "管理员添加用户",
+                "parameters": [
+                    {
+                        "description": "管理员添加用户",
+                        "name": "\"\"",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.UserRegisterReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Result"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.AppCategoryTmplBase": {
+            "type": "object",
+            "properties": {
+                "app_little_category": {
+                    "description": "标题",
+                    "type": "string"
+                },
+                "env": {
+                    "description": "必备的环境变量",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "icon": {
+                    "description": "图标",
+                    "type": "string"
+                },
+                "is_need_volume": {
+                    "description": "是否需要磁盘",
+                    "type": "boolean"
+                },
+                "show_name": {
+                    "description": "名称",
+                    "type": "string"
+                },
+                "summary": {
+                    "description": "简介",
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppCategoryTmplBaseArr": {
+            "type": "object",
+            "properties": {
+                "apps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.AppCategoryTmplBase"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "show_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppCategoryTmplRes": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.AppCategoryTmplBaseArr"
+                    }
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppConfigBase": {
+            "type": "object",
+            "properties": {
+                "file": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "path": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppConfigRes": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/model.AppConfigBase"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppConfigUpdateReq": {
+            "type": "object",
+            "required": [
+                "data",
+                "name"
+            ],
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "description": "app名称",
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppCreateReq": {
+            "type": "object",
+            "required": [
+                "app_little_category",
+                "cpu",
+                "mem",
+                "show_name",
+                "tag"
+            ],
+            "properties": {
+                "app_little_category": {
+                    "description": "app小类",
+                    "type": "string"
+                },
+                "cpu": {
+                    "description": "cpu核心数，例如1，2，3，4",
+                    "type": "string"
+                },
+                "env": {
+                    "description": "环境变量，格式key:value,例如[{\"ROOT_PASSWORD:2222\"},{\"AGE:4444\"}]",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "mem": {
+                    "description": "内存大小，例如1，2，3，4",
+                    "type": "string"
+                },
+                "sc": {
+                    "description": "储存类型",
+                    "type": "string"
+                },
+                "show_name": {
+                    "description": "名称",
+                    "type": "string"
+                },
+                "tag": {
+                    "description": "版本号",
+                    "type": "string"
+                },
+                "volume_size": {
+                    "description": "磁盘大小",
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppDeleteReq": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppDetailBase": {
+            "type": "object",
+            "properties": {
+                "app_big_category": {
+                    "type": "string"
+                },
+                "app_little_category": {
+                    "type": "string"
+                },
+                "controller": {
+                    "description": "对应k8s的控制器类别名称",
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_delete": {
+                    "type": "integer"
+                },
+                "main_container": {
+                    "$ref": "#/definitions/v1.Container"
+                },
+                "metrics": {
+                    "type": "object"
+                },
+                "modify_time": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "对应k8s资源名",
+                    "type": "string"
+                },
+                "replicas": {
+                    "type": "integer"
+                },
+                "show_name": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppDetailRes": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/model.AppDetailBase"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppEnvReq": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "env": {
+                    "description": "env,格式同创建app",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "description": "app名称",
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppInfo": {
+            "type": "object",
+            "properties": {
+                "app_big_category": {
+                    "type": "string"
+                },
+                "app_big_category_show_name": {
+                    "type": "string"
+                },
+                "app_little_category": {
+                    "type": "string"
+                },
+                "app_little_category_show_name": {
+                    "type": "string"
+                },
+                "controller": {
+                    "description": "对应k8s的控制器类别名称",
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string"
+                },
+                "end_point": {
+                    "type": "object"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_delete": {
+                    "type": "integer"
+                },
+                "modify_time": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "对应k8s资源名",
+                    "type": "string"
+                },
+                "show_name": {
+                    "type": "string"
+                },
+                "status": {
+                    "description": "空字符串\"\"表示创建中，1表示停止，2和3表示正常运行(2说明副本还没有全部就绪,3说明副本全部就绪)",
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppListBase": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.AppInfo"
+                    }
+                }
+            }
+        },
+        "model.AppListReq": {
+            "type": "object",
+            "required": [
+                "current",
+                "pageSize"
+            ],
+            "properties": {
+                "category": {
+                    "description": "类别",
+                    "type": "string"
+                },
+                "current": {
+                    "description": "当前第几页",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页多少条",
+                    "type": "integer"
+                },
+                "show_name": {
+                    "description": "名称",
+                    "type": "string"
+                },
+                "user_name": {
+                    "description": "用户名",
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppListRes": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/model.AppListBase"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppLittleCategoryTagBase": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Tag"
+                    }
+                }
+            }
+        },
+        "model.AppLittleCategoryTagReq": {
+            "type": "object",
+            "required": [
+                "current",
+                "little_category",
+                "pageSize"
+            ],
+            "properties": {
+                "current": {
+                    "description": "当前第几页",
+                    "type": "integer"
+                },
+                "little_category": {
+                    "type": "string"
+                },
+                "pageSize": {
+                    "description": "每页多少条",
+                    "type": "integer"
+                },
+                "search": {
+                    "description": "模糊搜索字段，可不传",
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppLittleCategoryTagRes": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/model.AppLittleCategoryTagBase"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppOpenReq": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "is_open": {
+                    "description": "开启时传 true，关闭时传 false",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "app名称",
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppReplicasReq": {
+            "type": "object",
+            "required": [
+                "name",
+                "replicas"
+            ],
+            "properties": {
+                "name": {
+                    "description": "app名称，注意不是show_name",
+                    "type": "string"
+                },
+                "replicas": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.AppRestartReq": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "description": "app名称，注意不是show_name",
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppRestoreReq": {
+            "type": "object",
+            "required": [
+                "app_name",
+                "snapshot_id"
+            ],
+            "properties": {
+                "app_name": {
+                    "type": "string"
+                },
+                "snapshot_id": {
+                    "description": "快照id",
+                    "type": "integer"
+                }
+            }
+        },
+        "model.AppScaleReq": {
+            "type": "object",
+            "required": [
+                "cpu",
+                "mem",
+                "name"
+            ],
+            "properties": {
+                "cpu": {
+                    "description": "cpu核心数，例如1，2，3，4",
+                    "type": "string"
+                },
+                "mem": {
+                    "description": "内存大小，例如1，2，3，4",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "app名称",
+                    "type": "string"
+                }
+            }
+        },
+        "model.AppVersionReq": {
+            "type": "object",
+            "required": [
+                "name",
+                "version"
+            ],
+            "properties": {
+                "name": {
+                    "description": "app名称",
+                    "type": "string"
+                },
+                "version": {
+                    "description": "版本",
+                    "type": "string"
+                }
+            }
+        },
+        "model.HelmApp": {
+            "type": "object",
+            "properties": {
+                "chart_name": {
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string"
+                },
+                "end_point": {
+                    "type": "object"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "modify_time": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "repo_name": {
+                    "type": "string"
+                },
+                "repo_url": {
+                    "type": "string"
+                },
+                "status": {
+                    "description": "值为0的时候显示创建中(灰色转圈图标),值为-1表示创建失败(红色失败图标)，值为1表示创建成功(绿色成功图标)",
+                    "type": "integer"
+                },
+                "user_name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.HelmReleaseCreateReq": {
+            "type": "object",
+            "required": [
+                "chart_name",
+                "name",
+                "repo_name",
+                "repo_url",
+                "value",
+                "version"
+            ],
+            "properties": {
+                "chart_name": {
+                    "description": "对应name",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名称,需要用户输入,后端做了唯一性校验",
+                    "type": "string"
+                },
+                "repo_name": {
+                    "description": "对应repository.name",
+                    "type": "string"
+                },
+                "repo_url": {
+                    "description": "对应repository.url",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "用户在json编辑器输入的内容",
+                    "type": "string"
+                },
+                "version": {
+                    "description": "对应version",
+                    "type": "string"
+                }
+            }
+        },
+        "model.HelmReleaseList": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.HelmApp"
+                    }
+                }
+            }
+        },
+        "model.HelmReleaseListReq": {
+            "type": "object",
+            "required": [
+                "current",
+                "pageSize"
+            ],
+            "properties": {
+                "current": {
+                    "description": "当前第几页",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页多少条",
+                    "type": "integer"
+                },
+                "search": {
+                    "description": "模糊搜索字段，可根据名称来搜索",
+                    "type": "string"
+                },
+                "user_name": {
+                    "description": "用户名",
+                    "type": "string"
+                }
+            }
+        },
+        "model.HelmReleaseListRes": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/model.HelmReleaseList"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.HelmReleaseReq": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "release名称",
+                    "type": "string"
+                }
+            }
+        },
+        "model.HelmReleaseUpdateReq": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "chart_name": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "用户输入的，需要全局唯一",
+                    "type": "string"
+                },
+                "repo_name": {
+                    "type": "string"
+                },
+                "repo_url": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.ResourceQuota": {
+            "type": "object",
+            "required": [
+                "cpu",
+                "mem"
+            ],
+            "properties": {
+                "cpu": {
+                    "description": "可以使用的cpu总核数",
+                    "type": "string"
+                },
+                "mem": {
+                    "description": "可以使用的内存总量",
+                    "type": "string"
+                }
+            }
+        },
+        "model.Result": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "object"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.SC": {
+            "type": "object",
+            "properties": {
+                "allow_volume_expansion": {
+                    "description": "是否允许扩容",
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.SCListRes": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.SC"
+                    }
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.SnapshotCreateReq": {
+            "type": "object",
+            "required": [
+                "app_name",
+                "show_name"
+            ],
+            "properties": {
+                "app_name": {
+                    "description": "要创建快照的app名称，注意不是show_name",
+                    "type": "string"
+                },
+                "show_name": {
+                    "description": "名称",
+                    "type": "string"
+                }
+            }
+        },
+        "model.SnapshotDeleteReq": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "description": "快照id",
+                    "type": "integer"
+                }
+            }
+        },
+        "model.SnapshotInfo": {
+            "type": "object",
+            "properties": {
+                "app_name": {
+                    "type": "string"
+                },
+                "app_show_name": {
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "modify_time": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "快照名称,对应k8s snapshot的资源名",
+                    "type": "string"
+                },
+                "show_name": {
+                    "description": "给用户展示的名称",
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.SnapshotListBase": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.SnapshotInfo"
+                    }
+                }
+            }
+        },
+        "model.SnapshotListReq": {
+            "type": "object",
+            "required": [
+                "current",
+                "pageSize"
+            ],
+            "properties": {
+                "app_name": {
+                    "description": "app名称，可不传",
+                    "type": "string"
+                },
+                "current": {
+                    "description": "当前第几页",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页多少条",
+                    "type": "integer"
+                },
+                "search": {
+                    "description": "模糊搜索字段，可不传",
+                    "type": "string"
+                },
+                "user_name": {
+                    "description": "用户名,可不传",
+                    "type": "string"
+                }
+            }
+        },
+        "model.SnapshotListRes": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/model.SnapshotListBase"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.Tag": {
+            "type": "object",
+            "properties": {
+                "app_little_category": {
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "library": {
+                    "type": "string"
+                },
+                "modify_time": {
+                    "type": "string"
+                },
+                "version": {
+                    "description": "版本号",
+                    "type": "string"
+                }
+            }
+        },
+        "model.User": {
+            "type": "object",
+            "properties": {
+                "avatar_num": {
+                    "type": "integer"
+                },
+                "create_time": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_delete": {
+                    "type": "integer"
+                },
+                "modify_time": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "name要是唯一的，对应k8s的命名空间",
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "resource_quota": {
+                    "$ref": "#/definitions/model.ResourceQuota"
+                },
+                "role_id": {
+                    "description": "1表示管理员，2表示开发者",
+                    "type": "integer"
+                }
+            }
+        },
+        "model.UserDeleteBase": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "is_clean_app": {
+                    "description": "是否删除对应用户下的所有app",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "要删除的用户名",
+                    "type": "string"
+                }
+            }
+        },
+        "model.UserDeleteReq": {
+            "type": "object",
+            "properties": {
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.UserDeleteBase"
+                    }
+                }
+            }
+        },
+        "model.UserEditReq": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.UserListBase": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.User"
+                    }
+                }
+            }
+        },
+        "model.UserListReq": {
+            "type": "object",
+            "required": [
+                "current",
+                "pageSize"
+            ],
+            "properties": {
+                "current": {
+                    "description": "当前第几页",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "description": "每页多少条",
+                    "type": "integer"
+                },
+                "role_id": {
+                    "description": "角色,可不传 1表示管理员 2表示开发者",
+                    "type": "integer"
+                },
+                "search": {
+                    "description": "模糊搜索字段，可不传",
+                    "type": "string"
+                }
+            }
+        },
+        "model.UserListRes": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/model.UserListBase"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.UserLoginReq": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "用户名",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "密码",
+                    "type": "string"
+                }
+            }
+        },
+        "model.UserLoginRes": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "$ref": "#/definitions/model.UserLoginResBase"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.UserLoginResBase": {
+            "type": "object",
+            "properties": {
+                "avatar_num": {
+                    "type": "integer"
+                },
+                "avatar_url": {
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_delete": {
+                    "type": "integer"
+                },
+                "modify_time": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "name要是唯一的，对应k8s的命名空间",
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "resource_quota": {
+                    "$ref": "#/definitions/model.ResourceQuota"
+                },
+                "role_id": {
+                    "description": "1表示管理员，2表示开发者",
+                    "type": "integer"
+                },
+                "role_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.UserRegisterReq": {
+            "type": "object",
+            "required": [
+                "name",
+                "role_id"
+            ],
+            "properties": {
+                "email": {
+                    "description": "邮箱号",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "用户名",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "密码",
+                    "type": "string"
+                },
+                "phone": {
+                    "description": "手机号",
+                    "type": "string"
+                },
+                "resource_quota": {
+                    "description": "资源限制相关的,不传表示不限制",
+                    "$ref": "#/definitions/model.ResourceQuota"
+                },
+                "role_id": {
+                    "description": "角色 1表示管理员 2表示开发者",
+                    "type": "integer"
+                }
+            }
+        },
+        "v1.Container": {
+            "type": "object",
+            "properties": {
+                "args": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "command": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "cpu": {
+                    "type": "string"
+                },
+                "env": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "image": {
+                    "type": "string"
+                },
+                "mem": {
+                    "type": "string"
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tag": {
+                    "type": "string"
+                },
+                "volume_mount": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

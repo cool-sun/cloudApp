@@ -1,0 +1,1598 @@
+definitions:
+  model.AppCategoryTmplBase:
+    properties:
+      app_little_category:
+        description: 标题
+        type: string
+      env:
+        description: 必备的环境变量
+        items:
+          type: string
+        type: array
+      icon:
+        description: 图标
+        type: string
+      is_need_volume:
+        description: 是否需要磁盘
+        type: boolean
+      show_name:
+        description: 名称
+        type: string
+      summary:
+        description: 简介
+        type: string
+    type: object
+  model.AppCategoryTmplBaseArr:
+    properties:
+      apps:
+        items:
+          $ref: '#/definitions/model.AppCategoryTmplBase'
+        type: array
+      name:
+        type: string
+      show_name:
+        type: string
+    type: object
+  model.AppCategoryTmplRes:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/model.AppCategoryTmplBaseArr'
+        type: array
+      msg:
+        type: string
+    type: object
+  model.AppConfigBase:
+    properties:
+      file:
+        additionalProperties:
+          type: string
+        type: object
+      path:
+        type: string
+    type: object
+  model.AppConfigRes:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/model.AppConfigBase'
+      msg:
+        type: string
+    type: object
+  model.AppConfigUpdateReq:
+    properties:
+      data:
+        additionalProperties:
+          type: string
+        type: object
+      name:
+        description: app名称
+        type: string
+    required:
+    - data
+    - name
+    type: object
+  model.AppCreateReq:
+    properties:
+      app_little_category:
+        description: app小类
+        type: string
+      cpu:
+        description: cpu核心数，例如1，2，3，4
+        type: string
+      env:
+        description: 环境变量，格式key:value,例如[{"ROOT_PASSWORD:2222"},{"AGE:4444"}]
+        items:
+          type: string
+        type: array
+      mem:
+        description: 内存大小，例如1，2，3，4
+        type: string
+      sc:
+        description: 储存类型
+        type: string
+      show_name:
+        description: 名称
+        type: string
+      tag:
+        description: 版本号
+        type: string
+      volume_size:
+        description: 磁盘大小
+        type: string
+    required:
+    - app_little_category
+    - cpu
+    - mem
+    - show_name
+    - tag
+    type: object
+  model.AppDeleteReq:
+    properties:
+      name:
+        type: string
+    type: object
+  model.AppDetailBase:
+    properties:
+      app_big_category:
+        type: string
+      app_little_category:
+        type: string
+      controller:
+        description: 对应k8s的控制器类别名称
+        type: string
+      create_time:
+        type: string
+      id:
+        type: integer
+      is_delete:
+        type: integer
+      main_container:
+        $ref: '#/definitions/v1.Container'
+      metrics:
+        type: object
+      modify_time:
+        type: string
+      name:
+        description: 对应k8s资源名
+        type: string
+      replicas:
+        type: integer
+      show_name:
+        type: string
+      user_name:
+        type: string
+    type: object
+  model.AppDetailRes:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/model.AppDetailBase'
+      msg:
+        type: string
+    type: object
+  model.AppEnvReq:
+    properties:
+      env:
+        description: env,格式同创建app
+        items:
+          type: string
+        type: array
+      name:
+        description: app名称
+        type: string
+    required:
+    - name
+    type: object
+  model.AppInfo:
+    properties:
+      app_big_category:
+        type: string
+      app_big_category_show_name:
+        type: string
+      app_little_category:
+        type: string
+      app_little_category_show_name:
+        type: string
+      controller:
+        description: 对应k8s的控制器类别名称
+        type: string
+      create_time:
+        type: string
+      end_point:
+        type: object
+      id:
+        type: integer
+      is_delete:
+        type: integer
+      modify_time:
+        type: string
+      name:
+        description: 对应k8s资源名
+        type: string
+      show_name:
+        type: string
+      status:
+        description: 空字符串""表示创建中，1表示停止，2和3表示正常运行(2说明副本还没有全部就绪,3说明副本全部就绪)
+        type: string
+      user_name:
+        type: string
+    type: object
+  model.AppListBase:
+    properties:
+      count:
+        type: integer
+      list:
+        items:
+          $ref: '#/definitions/model.AppInfo'
+        type: array
+    type: object
+  model.AppListReq:
+    properties:
+      category:
+        description: 类别
+        type: string
+      current:
+        description: 当前第几页
+        type: integer
+      pageSize:
+        description: 每页多少条
+        type: integer
+      show_name:
+        description: 名称
+        type: string
+      user_name:
+        description: 用户名
+        type: string
+    required:
+    - current
+    - pageSize
+    type: object
+  model.AppListRes:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/model.AppListBase'
+      msg:
+        type: string
+    type: object
+  model.AppLittleCategoryTagBase:
+    properties:
+      count:
+        type: integer
+      tags:
+        items:
+          $ref: '#/definitions/model.Tag'
+        type: array
+    type: object
+  model.AppLittleCategoryTagReq:
+    properties:
+      current:
+        description: 当前第几页
+        type: integer
+      little_category:
+        type: string
+      pageSize:
+        description: 每页多少条
+        type: integer
+      search:
+        description: 模糊搜索字段，可不传
+        type: string
+    required:
+    - current
+    - little_category
+    - pageSize
+    type: object
+  model.AppLittleCategoryTagRes:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/model.AppLittleCategoryTagBase'
+      msg:
+        type: string
+    type: object
+  model.AppOpenReq:
+    properties:
+      is_open:
+        description: 开启时传 true，关闭时传 false
+        type: boolean
+      name:
+        description: app名称
+        type: string
+    required:
+    - name
+    type: object
+  model.AppReplicasReq:
+    properties:
+      name:
+        description: app名称，注意不是show_name
+        type: string
+      replicas:
+        type: integer
+    required:
+    - name
+    - replicas
+    type: object
+  model.AppRestartReq:
+    properties:
+      name:
+        description: app名称，注意不是show_name
+        type: string
+    required:
+    - name
+    type: object
+  model.AppRestoreReq:
+    properties:
+      app_name:
+        type: string
+      snapshot_id:
+        description: 快照id
+        type: integer
+    required:
+    - app_name
+    - snapshot_id
+    type: object
+  model.AppScaleReq:
+    properties:
+      cpu:
+        description: cpu核心数，例如1，2，3，4
+        type: string
+      mem:
+        description: 内存大小，例如1，2，3，4
+        type: string
+      name:
+        description: app名称
+        type: string
+    required:
+    - cpu
+    - mem
+    - name
+    type: object
+  model.AppVersionReq:
+    properties:
+      name:
+        description: app名称
+        type: string
+      version:
+        description: 版本
+        type: string
+    required:
+    - name
+    - version
+    type: object
+  model.HelmApp:
+    properties:
+      chart_name:
+        type: string
+      create_time:
+        type: string
+      end_point:
+        type: object
+      id:
+        type: integer
+      modify_time:
+        type: string
+      name:
+        type: string
+      repo_name:
+        type: string
+      repo_url:
+        type: string
+      status:
+        description: 值为0的时候显示创建中(灰色转圈图标),值为-1表示创建失败(红色失败图标)，值为1表示创建成功(绿色成功图标)
+        type: integer
+      user_name:
+        type: string
+      value:
+        type: string
+      version:
+        type: string
+    type: object
+  model.HelmReleaseCreateReq:
+    properties:
+      chart_name:
+        description: 对应name
+        type: string
+      name:
+        description: 名称,需要用户输入,后端做了唯一性校验
+        type: string
+      repo_name:
+        description: 对应repository.name
+        type: string
+      repo_url:
+        description: 对应repository.url
+        type: string
+      value:
+        description: 用户在json编辑器输入的内容
+        type: string
+      version:
+        description: 对应version
+        type: string
+    required:
+    - chart_name
+    - name
+    - repo_name
+    - repo_url
+    - value
+    - version
+    type: object
+  model.HelmReleaseList:
+    properties:
+      count:
+        type: integer
+      list:
+        items:
+          $ref: '#/definitions/model.HelmApp'
+        type: array
+    type: object
+  model.HelmReleaseListReq:
+    properties:
+      current:
+        description: 当前第几页
+        type: integer
+      pageSize:
+        description: 每页多少条
+        type: integer
+      search:
+        description: 模糊搜索字段，可根据名称来搜索
+        type: string
+      user_name:
+        description: 用户名
+        type: string
+    required:
+    - current
+    - pageSize
+    type: object
+  model.HelmReleaseListRes:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/model.HelmReleaseList'
+      msg:
+        type: string
+    type: object
+  model.HelmReleaseReq:
+    properties:
+      name:
+        description: release名称
+        type: string
+    type: object
+  model.HelmReleaseUpdateReq:
+    properties:
+      chart_name:
+        type: string
+      name:
+        description: 用户输入的，需要全局唯一
+        type: string
+      repo_name:
+        type: string
+      repo_url:
+        type: string
+      value:
+        type: string
+      version:
+        type: string
+    required:
+    - name
+    type: object
+  model.ResourceQuota:
+    properties:
+      cpu:
+        description: 可以使用的cpu总核数
+        type: string
+      mem:
+        description: 可以使用的内存总量
+        type: string
+    required:
+    - cpu
+    - mem
+    type: object
+  model.Result:
+    properties:
+      code:
+        type: integer
+      data:
+        type: object
+      msg:
+        type: string
+    type: object
+  model.SC:
+    properties:
+      allow_volume_expansion:
+        description: 是否允许扩容
+        type: boolean
+      name:
+        type: string
+    type: object
+  model.SCListRes:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/model.SC'
+        type: array
+      msg:
+        type: string
+    type: object
+  model.SnapshotCreateReq:
+    properties:
+      app_name:
+        description: 要创建快照的app名称，注意不是show_name
+        type: string
+      show_name:
+        description: 名称
+        type: string
+    required:
+    - app_name
+    - show_name
+    type: object
+  model.SnapshotDeleteReq:
+    properties:
+      id:
+        description: 快照id
+        type: integer
+    required:
+    - id
+    type: object
+  model.SnapshotInfo:
+    properties:
+      app_name:
+        type: string
+      app_show_name:
+        type: string
+      create_time:
+        type: string
+      id:
+        type: integer
+      modify_time:
+        type: string
+      name:
+        description: 快照名称,对应k8s snapshot的资源名
+        type: string
+      show_name:
+        description: 给用户展示的名称
+        type: string
+      user_name:
+        type: string
+    type: object
+  model.SnapshotListBase:
+    properties:
+      count:
+        type: integer
+      list:
+        items:
+          $ref: '#/definitions/model.SnapshotInfo'
+        type: array
+    type: object
+  model.SnapshotListReq:
+    properties:
+      app_name:
+        description: app名称，可不传
+        type: string
+      current:
+        description: 当前第几页
+        type: integer
+      pageSize:
+        description: 每页多少条
+        type: integer
+      search:
+        description: 模糊搜索字段，可不传
+        type: string
+      user_name:
+        description: 用户名,可不传
+        type: string
+    required:
+    - current
+    - pageSize
+    type: object
+  model.SnapshotListRes:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/model.SnapshotListBase'
+      msg:
+        type: string
+    type: object
+  model.Tag:
+    properties:
+      app_little_category:
+        type: string
+      create_time:
+        type: string
+      id:
+        type: integer
+      library:
+        type: string
+      modify_time:
+        type: string
+      version:
+        description: 版本号
+        type: string
+    type: object
+  model.User:
+    properties:
+      avatar_num:
+        type: integer
+      create_time:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      is_delete:
+        type: integer
+      modify_time:
+        type: string
+      name:
+        description: name要是唯一的，对应k8s的命名空间
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      resource_quota:
+        $ref: '#/definitions/model.ResourceQuota'
+      role_id:
+        description: 1表示管理员，2表示开发者
+        type: integer
+    type: object
+  model.UserDeleteBase:
+    properties:
+      is_clean_app:
+        description: 是否删除对应用户下的所有app
+        type: boolean
+      name:
+        description: 要删除的用户名
+        type: string
+    required:
+    - name
+    type: object
+  model.UserDeleteReq:
+    properties:
+      users:
+        items:
+          $ref: '#/definitions/model.UserDeleteBase'
+        type: array
+    type: object
+  model.UserEditReq:
+    properties:
+      email:
+        type: string
+      phone:
+        type: string
+    type: object
+  model.UserListBase:
+    properties:
+      count:
+        type: integer
+      list:
+        items:
+          $ref: '#/definitions/model.User'
+        type: array
+    type: object
+  model.UserListReq:
+    properties:
+      current:
+        description: 当前第几页
+        type: integer
+      pageSize:
+        description: 每页多少条
+        type: integer
+      role_id:
+        description: 角色,可不传 1表示管理员 2表示开发者
+        type: integer
+      search:
+        description: 模糊搜索字段，可不传
+        type: string
+    required:
+    - current
+    - pageSize
+    type: object
+  model.UserListRes:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/model.UserListBase'
+      msg:
+        type: string
+    type: object
+  model.UserLoginReq:
+    properties:
+      name:
+        description: 用户名
+        type: string
+      password:
+        description: 密码
+        type: string
+    type: object
+  model.UserLoginRes:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/model.UserLoginResBase'
+      msg:
+        type: string
+    type: object
+  model.UserLoginResBase:
+    properties:
+      avatar_num:
+        type: integer
+      avatar_url:
+        type: string
+      create_time:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      is_delete:
+        type: integer
+      modify_time:
+        type: string
+      name:
+        description: name要是唯一的，对应k8s的命名空间
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      resource_quota:
+        $ref: '#/definitions/model.ResourceQuota'
+      role_id:
+        description: 1表示管理员，2表示开发者
+        type: integer
+      role_name:
+        type: string
+    type: object
+  model.UserRegisterReq:
+    properties:
+      email:
+        description: 邮箱号
+        type: string
+      name:
+        description: 用户名
+        type: string
+      password:
+        description: 密码
+        type: string
+      phone:
+        description: 手机号
+        type: string
+      resource_quota:
+        $ref: '#/definitions/model.ResourceQuota'
+        description: 资源限制相关的,不传表示不限制
+      role_id:
+        description: 角色 1表示管理员 2表示开发者
+        type: integer
+    required:
+    - name
+    - role_id
+    type: object
+  v1.Container:
+    properties:
+      args:
+        items:
+          type: string
+        type: array
+      command:
+        items:
+          type: string
+        type: array
+      cpu:
+        type: string
+      env:
+        items:
+          type: string
+        type: array
+      image:
+        type: string
+      mem:
+        type: string
+      ports:
+        items:
+          type: string
+        type: array
+      tag:
+        type: string
+      volume_mount:
+        items:
+          type: string
+        type: array
+    type: object
+info:
+  contact: {}
+paths:
+  /app-category/tag/list:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: app创建
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.AppLittleCategoryTagReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.AppLittleCategoryTagRes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 获取某个类型的app的所有支持的tag号，即版本号
+      tags:
+      - app类别
+  /app-category/template:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 获取所有支持的App类别模板
+          schema:
+            $ref: '#/definitions/model.AppCategoryTmplRes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 获取所有支持的App类别模板
+      tags:
+      - app类别
+  /app/config/{app_name}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: app_name
+        in: path
+        name: app_name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.AppConfigRes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 获取app配置
+      tags:
+      - app
+  /app/config/update:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 更新app的配置文件
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.AppConfigUpdateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 更新app的配置文件
+      tags:
+      - app
+  /app/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: app创建
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.AppCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: app创建
+      tags:
+      - app
+  /app/delete:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: app删除
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.AppDeleteReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: app删除
+      tags:
+      - app
+  /app/detail/{app_name}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: app_name
+        in: path
+        name: app_name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.AppDetailRes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 获取app详细信息
+      tags:
+      - app
+  /app/env:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: app更新env
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.AppEnvReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: app更新env
+      tags:
+      - app
+  /app/list:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: app信息列表
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.AppListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.AppListRes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: app信息列表
+      tags:
+      - app
+  /app/open:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: app开启或关闭集群外访问
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.AppOpenReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: app开启或关闭集群外访问
+      tags:
+      - app
+  /app/replicas:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: app副本数伸缩
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.AppReplicasReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: app副本数伸缩
+      tags:
+      - app
+  /app/restart:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: app重启
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.AppRestartReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: app重启
+      tags:
+      - app
+  /app/restore:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: app根据快照恢复数据
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.AppRestoreReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: app根据快照恢复数据
+      tags:
+      - app
+  /app/sc:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 获取支持的存储类型
+          schema:
+            $ref: '#/definitions/model.SCListRes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 获取支持的存储类型
+      tags:
+      - app
+  /app/scale:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: app扩缩容,主要是内存和cpu的调整
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.AppScaleReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: app扩缩容
+      tags:
+      - app
+  /app/snapshot/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: app创建存储快照
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.SnapshotCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: app创建存储快照
+      tags:
+      - app快照
+  /app/snapshot/delete:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 删除快照
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.SnapshotDeleteReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 删除快照
+      tags:
+      - app快照
+  /app/snapshot/list:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 获取快照列表
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.SnapshotListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.SnapshotListRes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 获取快照列表
+      tags:
+      - app快照
+  /app/start:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: app启动
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.AppRestartReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: app启动
+      tags:
+      - app
+  /app/stop:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: app停止
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.AppRestartReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: app停止
+      tags:
+      - app
+  /app/version:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: app版本更换
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.AppVersionReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: app版本更换
+      tags:
+      - app
+  /helm/release/Update:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: helm release更新
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.HelmReleaseUpdateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: helm release更新
+      tags:
+      - helm release
+  /helm/release/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: helm release创建
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.HelmReleaseCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: helm release创建
+      tags:
+      - helm release
+  /helm/release/delete:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: helm release删除
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.HelmReleaseReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: helm release删除
+      tags:
+      - helm release
+  /helm/release/list:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: helm release列表信息
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.HelmReleaseListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.HelmReleaseListRes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: helm release列表信息
+      tags:
+      - helm release
+  /helm/release/values:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 获取helm release的values
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.HelmReleaseReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 获取helm release的values
+      tags:
+      - helm release
+  /user/delete:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 删除用户
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.UserDeleteReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 删除用户
+      tags:
+      - 用户
+  /user/edit:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 编辑用户信息,适用于用户自己编辑自己的信息
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.UserEditReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 编辑用户信息
+      tags:
+      - 用户
+  /user/list:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 获取用户列表
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.UserListReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.UserListRes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 获取用户列表
+      tags:
+      - 用户
+  /user/login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用户登录
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.UserLoginReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.UserLoginRes'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 用户登录
+      tags:
+      - 用户
+  /user/logout:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 用户登出
+      tags:
+      - 用户
+  /user/manager-edit:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 管理员编辑用户
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.UserRegisterReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 管理员编辑用户
+      tags:
+      - 用户
+  /user/register:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 管理员添加用户
+        in: body
+        name: '""'
+        required: true
+        schema:
+          $ref: '#/definitions/model.UserRegisterReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Result'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Result'
+      summary: 管理员添加用户
+      tags:
+      - 用户
+swagger: "2.0"

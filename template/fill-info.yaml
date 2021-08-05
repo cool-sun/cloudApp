@@ -1,0 +1,38 @@
+#该文件是对各类app信息的补充
+database: #大类
+  show_name: 数据库
+  items:
+    microsoft-sql-server: #小类
+      summary: Microsoft SQL Server 是一个全面的数据库平台，使用集成的商业智能 (BI)工具提供了企业级的数据管理。Microsoft SQL Server 数据库引擎为关系型数据和结构化数据提供了更安全可靠的存储功能，使您可以构建和管理用于业务的高可用和高性能的数据应用程序 #简介
+      show_name: Microsoft SQL Server
+      icon: /static/app-icon/microsoft-sql-server.png
+    mysql:
+      summary: MySQL 是最流行的关系型数据库管理系统，在 WEB 应用方面 MySQL 是最好的 RDBMS(Relational Database Management System：关系数据库管理系统)应用软件之一
+      show_name: MySQL
+      icon: /static/app-icon/mysql.png
+    postgresql:
+      summary: PostgreSQL是开源的对象-关系数据库数据库管理系统，在类似BSD许可与MIT许可的PostgreSQL许可下发行
+      show_name: PostgreSQL
+      icon: /static/app-icon/postgresql.png
+    mariadb:
+      summary: MariaDB是MySQL关系数据库管理系统的一个复刻，由社区开发，有商业支持，旨在继续保持在GNU GPL下开源。MariaDB的开发是由MySQL的一些原始开发者领导的，他们担心甲骨文公司收购MySQL后会有一些隐患
+      show_name: MariaDB
+      icon: /static/app-icon/mariadb.png
+    redis:
+      summary: Redis 是一个开源的使用 ANSI C 语言编写、遵守 BSD 协议、支持网络、可基于内存、分布式、可选持久性的键值对(Key-Value)存储数据库，并提供多种语言的 API。
+      show_name: Redis
+      icon: /static/app-icon/redis.png
+    mongo:
+      summary: MongoDB是一种面向文档的数据库管理系统，用C++等语言撰写而成，以解决应用程序开发社区中的大量现实问题。MongoDB由MongoDB Inc.于2007年10月开发，2009年2月首度推出，现以服务器端公共许可分发。
+      show_name: MongoDB
+      icon: /static/app-icon/mongo.png
+storage:
+  show_name: 存储
+os:
+  show_name: 操作系统
+  items:
+    ubuntu:
+      summary: Ubuntu是著名的Linux发行版之一，也是目前最多用户的Linux版本
+      show_name: Ubuntu
+      icon: /static/app-icon/ubuntu.png
+

@@ -1,0 +1,19 @@
+app_big_category: autofill
+app_little_category: autofill
+replicas: 1
+strategy: 1
+controller: Deployment
+pod:
+  init:    #init容器，非必填
+  sidecar: #sidecar模式下的容器，非必填
+  main: #主要干活的容器，必填
+    image: docker.io/takeyamajp/ubuntu-sshd  #镜像名称
+    tag: ""       #镜像版本号
+    args: [ ]
+    command: [ ]
+    cpu: ""
+    mem: ""
+    env: [ "TZ:Asia/Shanghai","ROOT_PASSWORD:" ] #必要的环境变量(格式 name:value)
+    ports: [ "22:tcp" ]   #需要暴露的端口和协议(格式 端口:协议)，字符数组，每个端口是数组的一项
+    volume_mount: [ "/home","/root" ]   #需要挂载出来进行持久化的目录   //todo 这样挂载这个目录,还是没有持久化apt安装的软件
+volume_size: "" #持久化存储卷的总大小

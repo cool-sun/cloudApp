@@ -1,0 +1,32 @@
+apiVersion: cloud.k8s.io/v1
+kind: App
+metadata:
+  name: mysql34544455
+  namespace: cloud-app
+spec:
+  app_big_category: db
+  app_little_category: mysql
+  replicas: 1
+  strategy: 1
+  controller: Deployment
+  pod:
+    main:
+      image: mysql
+      tag: '8.0'
+      args: [ ]
+      command: [ ]
+      cpu: '2'
+      mem: '1'
+      env: [ "MYSQL_ROOT_PASSWORD:vndjbvjds" ]
+      ports: [ "3306:tcp" ]
+      volume_mount: [ "/var/lib/mysql" ]
+  pvc:
+    size: '3'
+    sc: 'local-path'
+  internet_access: true
+  config:
+    path: "/etc/mysql/mysql.conf.d"
+    file:
+      - mysqld.cnf
+
+

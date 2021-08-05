@@ -1,0 +1,25 @@
+apiVersion: cloud.k8s.io/v1
+kind: App
+metadata:
+  name: sqlserver22-k
+  namespace: cloud-app
+spec:
+  app_big_category: db
+  app_little_category: sqlserver
+  replicas: 1
+  strategy: 1
+  controller: Deployment
+  pod:
+    main:
+      image: mcr.microsoft.com/mssql/server
+      tag: 'latest'
+      args: [ ]
+      command: [ ]
+      cpu: '2'
+      mem: '2'
+      env: [ "ACCEPT_EULA:Y","SA_PASSWORD:123,.54WE","MSSQL_PID:Standard" ] #必要的环境变量(格式 name:value)
+      ports: [ "1433:tcp" ]   #需要暴露的端口和协议(格式 端口:协议)，字符数组，每个端口是数组的一项
+      volume_mount: [ "/var/opt/mssql","/var/opt/sqlserver" ]   #需要挂载出来进行持久化的目录
+
+  volume_size: '30'
+  internet_access: true
