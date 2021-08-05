@@ -2,12 +2,13 @@
 
 > cloud-app是基于k8s的简单易用的云应用平台，借助它可以快速安装部署各种应用，或者一键安装helm chart包，大幅提升k8s应用部署的效率。注意cloud-app的定位是应用的安装部署等操作，不是k8s的管理界面。
 
-
 ### 这里是后端代码，前端代码见这 [前端代码](https://gitee.com/coolsun972/cloudApp-front)
 
 ### 预览地址
 
 [cloud-app](http://4kfox.com:8090/index)  用户名:`cloud-app` 密码`123456`
+
+*偶尔访问不通可能是因为服务器在重启￣□￣｜｜*
 
 ### 功能特性
 
@@ -50,6 +51,7 @@
 
    > cd cloudApp-front && npm i && npm run server
 
+
 ### TODO
 
 - [ ] 监控k8s事件，并通过websocket发给前端，以便用户更好的了解应用安装情况
@@ -59,6 +61,7 @@
 - [ ] 持续优化用户体验
 - [ ] 。。。
 
+
 ### 效果图预览
 
 ![111.png](http://ww1.sinaimg.cn/large/0077OfRbly1gt4vwmwu0gj32hi1i01bf.jpg)
@@ -67,4 +70,7 @@
 ![444.png](http://ww1.sinaimg.cn/large/0077OfRbly1gt4vwmx1quj32ke1hw7qz.jpg)
 ![555.png](http://ww1.sinaimg.cn/large/0077OfRbly1gt4vwmwydjj32ke1huaua.jpg)
 ![api.png](http://ww1.sinaimg.cn/large/0077OfRbly1gt4w1fknx7j31ur336e81.jpg)
+
+### 最后如果你在使用`cloud-app`中遇到了问题，可以加群反馈。或者你也可以加群跟大家一起探讨云原生技术相关的问题
+![qq.jpg](http://ww1.sinaimg.cn/large/0077OfRbly1gt5sol9hpyj30u00z0acd.jpg )
 
